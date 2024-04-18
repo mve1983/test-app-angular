@@ -1,0 +1,28 @@
+.product-card {
+  background-color: beige;
+  color: brown;
+  border: 3px solid brown;
+  width: 100%;
+  height: 100%;
+}
+
+.dark {
+  color: rgb(58, 55, 55);
+}
+
+.description {
+  margin-top: 1rem;
+  font-size: 1.1rem;
+  font-weight: 400;
+}
+
+.title {
+  text-decoration: underline;
+}
+
+.product-image {
+  border-radius: .3rem;
+  width: 150px;
+  height: auto;
+  padding: 1rem;
+}

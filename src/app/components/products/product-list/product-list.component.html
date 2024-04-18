@@ -1,0 +1,28 @@
+<div *ngIf="!initialProducts.length; else productsList">...isLoading</div>
+<ng-template #productsList>
+  <div class="list-wrapper">
+  <section class="search-bar">
+    <label for="categories"
+      >Choose a category:
+      <select
+        name="categories"
+        id="categories"
+        (change)="filterByCategory($event)"
+      >
+        <option *ngFor="let category of categories" [value]="category">
+          {{ category }}
+        </option>
+      </select>
+    </label>
+    <label for="search" class="search-filter-label"
+      >Search by name:
+      <input name="search" type="text" (input)="searchByName($event)" />
+    </label>
+  </section>
+  <section class="products-list">
+    <div *ngFor="let product of productsToRender; index as i" class="product-card-wrapper">
+      <app-product-card [product]="product" [index]="i"></app-product-card>
+    </div>
+  </section>
+</div>
+</ng-template>
