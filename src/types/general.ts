@@ -7,3 +7,7 @@ export type Product = {
   rating: {rate: number, count: number},
   title: string
 }
+
+export interface CartProduct extends Product {
+  quantity: number
+}

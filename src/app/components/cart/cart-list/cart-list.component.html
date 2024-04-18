@@ -1,0 +1,11 @@
+<section>
+  <h3>Your cart:</h3>
+
+  <div *ngFor="let cartProduct of cartProducts; index as i">
+    <div>
+      <div>{{ cartProduct.id }}</div>
+    <div>{{ cartProduct.title }}</div>
+    <div>{{ cartProduct.quantity }}</div>
+  </div>
+  </div>
+</section>

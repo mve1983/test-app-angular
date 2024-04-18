@@ -25,5 +25,15 @@ header {
   z-index: 100;
 }
 
+dialog {
+  border: 3px solid brown;
+  background-color: beige;
+  color: brown;
+  border-radius: 0.3rem;
+  padding: 1rem;
+}
 
-
+dialog::backdrop {
+  background-color: black;
+  opacity: 0.5;
+}
