@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 import { ProductListComponent } from './components/products/product-list/product-list.component';
@@ -10,6 +10,11 @@ import { CartListComponent } from './components/cart/cart-list/cart-list.compone
   standalone: true,
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
-  imports: [RouterOutlet, ProductListComponent, HeaderComponent, CartListComponent],
+  imports: [
+    RouterOutlet,
+    ProductListComponent,
+    HeaderComponent,
+    CartListComponent,
+  ],
 })
 export class AppComponent {}

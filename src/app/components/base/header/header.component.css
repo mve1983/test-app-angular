@@ -1,6 +1,36 @@
 .headline {
-  margin: 0;
+  margin: 0.5rem 0 1rem 0;
   padding: 0;
   font-size: 2rem;
   font-weight: 900;
+  text-decoration: underline;
 }
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.navbar > * {
+  cursor: pointer;
+}
+
+.navbar > *:hover,
+.navbar > *:active {
+ border-bottom: 2px solid beige;
+ margin-bottom: -2px;
+}
+
+.active {
+  border-bottom: 2px solid beige;
+  margin-bottom: -2px;
+}
+
+
+
+

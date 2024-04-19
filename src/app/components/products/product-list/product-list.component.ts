@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgFor, NgIf } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
@@ -33,30 +33,56 @@ export class ProductListComponent implements OnInit {
   initialProducts: Product[] = [];
   productsToRender: Product[] = [];
   categories: Set<string> = new Set([]);
+  productCardObserver: IntersectionObserver | null = null;
 
   ngOnInit(): void {
-   this.productsService.fetchAllProducts().subscribe((products: Product[]) => {
+    this.productsService.fetchAllProducts().subscribe((products: Product[]) => {
       this.initialProducts = products;
       this.productsToRender = products;
       const categories = products.map((product: Product) => product.category);
       categories.unshift('all');
       this.categories = new Set(categories);
     });
+
+    this.setupProductsCardObserver();
+  }
+
+  setupProductsCardObserver(): void {
+    this.productCardObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.remove('animate-out');
+            entry.target.classList.add('animate-in');
+          } else {
+            entry.target.classList.remove('animate-in');
+            entry.target.classList.add('animate-out');
+          }
+        });
+      },
+      {
+        threshold: 0.1,
+      }
+    );
   }
 
   filterByCategory(event: Event): void {
+    this.productsToRender = [...this.initialProducts];
+
     (event.target as HTMLSelectElement).value === 'all'
-      ? (this.productsToRender = this.initialProducts)
+      ? (this.productsToRender = [...this.initialProducts])
       : (this.productsToRender = this.initialProducts.filter(
           (product: Product) =>
-            product.category ===
-            ((event.target as HTMLSelectElement).value as string)
+            product.category.toLowerCase() ===
+            ((event.target as HTMLSelectElement).value as string).toLowerCase()
         ));
   }
 
   searchByName(event: Event): void {
+    this.productsToRender = [...this.initialProducts];
+
     (event.target as HTMLSelectElement).value === ''
-      ? (this.productsToRender = this.initialProducts)
+      ? (this.productsToRender = [...this.initialProducts])
       : (this.productsToRender = this.initialProducts.filter(
           (product: Product) =>
             product.title

@@ -1,4 +1,4 @@
-<div *ngIf="!initialProducts.length; else productsList">...isLoading</div>
+<div *ngIf="!initialProducts.length; else productsList" class="spinner"></div>
 <ng-template #productsList>
   <div class="list-wrapper">
     <section class="search-bar">
@@ -7,6 +7,7 @@
         <select
           name="categories"
           id="categories"
+          class="input"
           (change)="filterByCategory($event)"
         >
           <option *ngFor="let category of categories" [value]="category">
@@ -16,7 +17,12 @@
       </label>
       <label for="search" class="search-filter-label"
         >Search by name:
-        <input name="search" type="text" (input)="searchByName($event)" />
+        <input
+          name="search"
+          type="text"
+          class="input"
+          (input)="searchByName($event)"
+        />
       </label>
     </section>
     <section class="products-list">
@@ -24,7 +30,11 @@
         *ngFor="let product of productsToRender; index as i"
         class="product-card-wrapper"
       >
-        <app-product-card [product]="product" [index]="i"></app-product-card>
+        <app-product-card
+          [product]="product"
+          [index]="i"
+          [productCardObserver]="productCardObserver"
+        ></app-product-card>
       </div>
     </section>
   </div>

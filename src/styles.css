@@ -11,12 +11,16 @@ body {
   background-color: lightgray;
 }
 
+a {
+  all: unset;
+}
+
 header {
   position: fixed;
   width: 100vw;
   top: 0;
   left: 0;
-  height: 4rem;
+  height: 6rem;
   background-color: brown;
   color: beige;
   font-weight: 900;
@@ -36,4 +40,18 @@ dialog {
 dialog::backdrop {
   background-color: black;
   opacity: 0.5;
+}
+
+.animate-in {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateX(0);
+  transition: all 1s;
+}
+
+.animate-out {
+  opacity: 0;
+  filter: blur(5px);
+  transform: translateX(-100%);
+  transition: all 1s;
 }
