@@ -18,5 +18,4 @@ export class ProductsService {
       .get(`https://fakestoreapi.com/products/${id}`)
       .pipe(map((res) => <Product>res));
   }
-  
 }

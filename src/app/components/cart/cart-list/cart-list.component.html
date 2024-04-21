@@ -1,13 +1,49 @@
-<section>
-  <h3>Your cart:</h3>
-
-  <div *ngFor="let cartProduct of cartProducts; index as i">
-    <div></div>
-
-    <div>
-      <div>{{ cartProduct.id }}</div>
+<section class="cart-page">
+  <div class="cart-flex">
+    <h2 class="cart-headline">Your cart:</h2>
+    <div class="cart-item-grid first-line">
+      <div class="text-align-center">Article No.</div>
+      <div>Product</div>
+      <div class="text-align-center">Quantity</div>
+      <div class="text-align-right">Price</div>
+      <div class="text-align-right">Total</div>
+    </div>
+    <div
+      *ngFor="let cartProduct of cartProducts; index as i"
+      class="cart-item-grid"
+    >
+      <div class="text-align-center">{{ cartProduct.id }}</div>
       <div>{{ cartProduct.title }}</div>
-      <div>{{ cartProduct.quantity }}</div>
+      <div class="text-align-center">
+        <select
+          name="quantity"
+          id="quantity"
+          class="input"
+          [value]="cartProduct.quantity"
+          (change)="changeQuantityOrDelete($event, cartProduct.id)"
+        >
+          <option value="0">0</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+        </select>
+      </div>
+      <div class="text-align-right">{{ formatPrice(cartProduct.price) }}</div>
+      <div class="text-align-right">
+        {{ formatPrice(cartProduct.price * cartProduct.quantity) }}
+      </div>
+    </div>
+    <div class="btn-checkout-wrapper">
+      <button mat-flat-button class="btn-checkout" (click)="checkout()">
+        Checkout
+      </button>
     </div>
   </div>
 </section>
+<app-checkout-modal></app-checkout-modal>

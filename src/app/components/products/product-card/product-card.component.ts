@@ -4,6 +4,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatButtonModule } from '@angular/material/button';
 import { CartService } from '../../cart/cart-list/cart.service';
+import { formatPrice } from '../../../../utils/utils';
 
 @Component({
   selector: 'app-product-card',
@@ -19,13 +20,15 @@ export class ProductCardComponent implements AfterViewInit, OnDestroy {
   @Input() index: number = 0;
   @Input() productCardObserver: IntersectionObserver | null = null;
 
+  formatPrice = formatPrice;
+
   ngAfterViewInit(): void {
     const elementsToObserve = document.querySelectorAll('.product-card');
     elementsToObserve.forEach((el) => this.productCardObserver!.observe(el));
   }
 
   ngOnDestroy(): void {
-    this.productCardObserver!.disconnect()
+    this.productCardObserver!.disconnect();
   }
 
   addToCart(id: number) {

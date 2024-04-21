@@ -1,1 +1,9 @@
-<p>incart-modal works!</p>
+<dialog id="in-cart-modal">
+  <div class="modal-text">Product was added to cart.</div>
+  <div class="modal-buttons-wrapper">
+    <button mat-flat-button (click)="goToCart()">Go to cart</button>
+    <button mat-flat-button (click)="closeInCartModal()">
+      Stay on products page
+    </button>
+  </div>
+</dialog>

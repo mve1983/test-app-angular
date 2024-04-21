@@ -1,34 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { NgFor, NgIf } from '@angular/common';
-import { MatIconModule } from '@angular/material/icon';
-import { MatTooltipModule } from '@angular/material/tooltip';
-import { MatButtonModule } from '@angular/material/button';
 
 import { ProductCardComponent } from '../product-card/product-card.component';
+import { IncartModalComponent } from '../../base/modals/incart-modal/incart-modal.component';
 import { ProductsService } from '../products.service';
 
 import { Product } from '../../../../types/general';
-import { Router } from '@angular/router';
+import { takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-product-list',
   standalone: true,
-  imports: [
-    ProductCardComponent,
-    NgFor,
-    NgIf,
-    MatIconModule,
-    MatTooltipModule,
-    MatButtonModule,
-  ],
+  imports: [ProductCardComponent, IncartModalComponent, NgFor, NgIf],
   templateUrl: './product-list.component.html',
   styleUrl: './product-list.component.css',
 })
 export class ProductListComponent implements OnInit {
-  constructor(
-    private productsService: ProductsService,
-    private router: Router
-  ) {}
+  constructor(private productsService: ProductsService) {}
 
   initialProducts: Product[] = [];
   productsToRender: Product[] = [];
@@ -42,7 +30,7 @@ export class ProductListComponent implements OnInit {
       const categories = products.map((product: Product) => product.category);
       categories.unshift('all');
       this.categories = new Set(categories);
-    });
+    }));
 
     this.setupProductsCardObserver();
   }
@@ -89,14 +77,5 @@ export class ProductListComponent implements OnInit {
               .toLowerCase()
               .includes((event.target as HTMLSelectElement).value.toLowerCase())
         ));
-  }
-
-  closeInCartModal() {
-    (document.querySelector('#in-cart-modal')! as HTMLDialogElement).close();
-  }
-
-  goToCart() {
-    this.closeInCartModal();
-    this.router.navigate(['/cart']);
   }
 }

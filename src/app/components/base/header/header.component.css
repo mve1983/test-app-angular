@@ -22,15 +22,11 @@
 
 .navbar > *:hover,
 .navbar > *:active {
- border-bottom: 2px solid beige;
- margin-bottom: -2px;
-}
-
-.active {
-  border-bottom: 2px solid beige;
+  border-bottom: 2px solid var(--main-bg-color);
   margin-bottom: -2px;
 }
 
-
-
-
+.active {
+  border-bottom: 2px solid var(--main-bg-color);
+  margin-bottom: -2px;
+}

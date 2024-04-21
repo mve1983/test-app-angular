@@ -2,16 +2,16 @@
   <mat-card-header>
     <mat-card-title-group>
       <mat-card-title class="title">{{ product.title }}</mat-card-title>
-      <mat-card-subtitle class="dark"
+      <mat-card-subtitle class="dark-text"
         >Category {{ product.category }}</mat-card-subtitle
       >
-      <mat-card-subtitle class="dark"
+      <mat-card-subtitle class="dark-text"
         >Article No. {{ product.id }}</mat-card-subtitle
       >
-      <mat-card-subtitle class="dark"
-        >Price {{ product.price }}</mat-card-subtitle
+      <mat-card-subtitle class="dark-text"
+        >Price {{ formatPrice(product.price) }}</mat-card-subtitle
       >
-      <mat-card-subtitle class="dark"
+      <mat-card-subtitle class="dark-text"
         >Rated {{ product.rating.rate }} by
         {{ product.rating.count }} buyers.</mat-card-subtitle
       >
@@ -22,6 +22,8 @@
     {{ product.description }}
   </mat-card-content>
   <div class="btn-add-wrapper">
-    <button mat-flat-button class="btn-add" (click)="addToCart(product.id)">Add to Cart</button>
+    <button mat-flat-button class="btn-add" (click)="addToCart(product.id)">
+      Add to Cart
+    </button>
   </div>
 </mat-card>

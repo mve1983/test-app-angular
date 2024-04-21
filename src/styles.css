@@ -1,4 +1,14 @@
-/* You can add global styles to this file, and also import other style files */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --main-bg-color: beige;
+  --main-text-color: rgb(77, 88, 147);
+  --dark-text: rgb(58, 55, 55);
+}
 
 html,
 body {
@@ -8,7 +18,7 @@ body {
   margin: 0;
   margin-top: 6rem;
   font-family: Roboto, "Helvetica Neue", sans-serif;
-  background-color: lightgray;
+  background: linear-gradient(grey, white) no-repeat;
 }
 
 a {
@@ -21,8 +31,8 @@ header {
   top: 0;
   left: 0;
   height: 6rem;
-  background-color: brown;
-  color: beige;
+  background-color: var(--main-text-color);
+  color: var(--main-bg-color);
   font-weight: 900;
   display: grid;
   place-items: center;
@@ -30,9 +40,9 @@ header {
 }
 
 dialog {
-  border: 3px solid brown;
-  background-color: beige;
-  color: brown;
+  border: 3px solid var(--main-text-color);
+  background-color: var(--main-bg-color);
+  color: var(--main-text-color);
   border-radius: 0.3rem;
   padding: 1rem;
 }

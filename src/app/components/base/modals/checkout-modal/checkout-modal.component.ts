@@ -6,21 +6,17 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatButtonModule } from '@angular/material/button';
 
 @Component({
-  selector: 'app-incart-modal',
+  selector: 'app-checkout-modal',
   standalone: true,
   imports: [MatIconModule, MatTooltipModule, MatButtonModule],
-  templateUrl: './incart-modal.component.html',
-  styleUrl: './incart-modal.component.css',
+  templateUrl: './checkout-modal.component.html',
+  styleUrl: './checkout-modal.component.css',
 })
-export class IncartModalComponent {
+export class CheckoutModalComponent {
   constructor(private router: Router) {}
 
-  closeInCartModal() {
-    (document.querySelector('#in-cart-modal')! as HTMLDialogElement).close();
-  }
-
-  goToCart() {
-    this.closeInCartModal();
-    this.router.navigate(['/cart']);
+  closeCheckoutModal() {
+    (document.querySelector('#checkout-modal')! as HTMLDialogElement).close();
+    this.router.navigate(['/products']);
   }
 }
